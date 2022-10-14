@@ -4,9 +4,13 @@ public class ArrayExamples {
 
   // Changes the input array to be in reversed order
   static void reverseInPlace(int[] arr) {
-    for(int i = 0; i < arr.length; i += 1) {
+    int temp = 0;
+    for(int i = 0; i < arr.length/2; i += 1) {
+      temp = arr[i];
       arr[i] = arr[arr.length - i - 1];
+      arr[arr.length - i - 1] = temp;
     }
+    //System.out.println("(" + arr + ")");
   }
 
   // Returns a *new* array with all the elements of the input array in reversed
@@ -14,9 +18,10 @@ public class ArrayExamples {
   static int[] reversed(int[] arr) {
     int[] newArray = new int[arr.length];
     for(int i = 0; i < arr.length; i += 1) {
-      arr[i] = newArray[arr.length - i - 1];
+      newArray[i] = arr[arr.length - i - 1];
     }
-    return arr;
+    //System.out.println("[" + arr + "]");
+    return newArray;
   }
 
   // Averages the numbers in the array (takes the mean), but leaves out the
@@ -29,12 +34,19 @@ public class ArrayExamples {
       if(num < lowest) { lowest = num; }
     }
     double sum = 0;
+    int temp = 0;
     for(double num: arr) {
-      if(num != lowest) { sum += num; }
+      if(num == lowest && temp == 0) {
+        temp = 1;
+      }
+      sum += num;
     }
     return sum / (arr.length - 1);
   }
-
+public static void main(String[] args) {
+  double[] input1 = { 1.5, 2.5, 3.5, 4.5};
+  System.out.println(averageWithoutLowest(input1));
+}
 
 }
 
