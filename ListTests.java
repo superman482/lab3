@@ -11,7 +11,7 @@ class Checker implements StringChecker {
     
 }
 public class ListTests {
-    
+
     @Test
     public void testFilter() {
         StringChecker sc = new Checker();
